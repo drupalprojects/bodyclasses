@@ -100,6 +100,20 @@ function bodyclasses_bodyclasses_info() {
     'function' => 'bodyclasses_bodyclasses_user_role',
   );
 
+  if (module_exists('context')) {
+    $bodyclasses['context'] = array(
+      'name' => t('Context'),
+      'function' => 'bodyclasses_bodyclasses_context',
+    );
+  }
+
+  if (module_exists('views')) {
+    $bodyclasses['views'] = array(
+      'name' => t('Views'),
+      'function' => 'bodyclasses_bodyclasses_views',
+    );
+  }
+
   return $bodyclasses;
 }
 
@@ -113,4 +127,48 @@ function bodyclasses_bodyclasses_user_role(&$variables) {
   else {
     return array('anonymous-user');
   }
+}
+
+/*
+ * Integration for the body classes for context
+ */
+function bodyclasses_bodyclasses_context(&$variables) {
+
+  $classes = array();
+
+  if (module_exists('context') && is_callable('context_active_contexts')) {
+    foreach (context_active_contexts() as $context) {
+      if (!empty($context->name)) {
+        $classes[] = preg_replace('/[^A-Za-z0-9_]/', '-', trim($context->name, '_- '));
+      }
+    }
+  }
+
+  return $classes;
+}
+
+/*
+ * Integration for the body classes for views
+ */
+function bodyclasses_bodyclasses_views(&$variables) {
+  $classes = array();
+
+  if (module_exists('views') && is_callable('views_get_page_view')) {
+    if ($view = views_get_page_view()) {
+      if (!empty($view->vid)) {
+        $classes[] = 'vid-' . $view->vid;
+      }
+      if (!empty($view->name)) {
+        $classes[] = preg_replace('/[^A-Za-z0-9_]/', '-', trim($view->name, '_- '));
+      }
+      if (!empty($view->current_display)) {
+        $classes[] = 'display-' . $view->current_display;
+      }
+      if (!empty($view->current_page)) {
+        $classes[] = 'page-index-' . $view->current_page;
+      }
+    }
+  }
+
+  return $classes;
 }
