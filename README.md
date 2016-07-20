@@ -1,5 +1,12 @@
-# Body Classes Drupal module
+# Body Classes Drupal Module
 
-Add contextual CSS classes to the body of the page.
+Adds contextual CSS classes to the body of the page.
 
-@todo Add documentation
+## Configuration
+
+- These options controls the display settings for the theme
+- Install the module and configure it at `admin/appearance/settings/bodyclasses`
+
+## Maintainers
+
+- [RobLoach](https://www.drupal.org/u/robloach)
