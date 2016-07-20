@@ -5,7 +5,7 @@ Adds contextual CSS classes to the body of the page.
 ## Configuration
 
 - These options controls the display settings for the theme
-- Install the module and configure it at `admin/appearance/settings/bodyclasses`
+- Install the module and configure it at `admin/config/content/bodyclasses`
 
 ## Maintainers
 

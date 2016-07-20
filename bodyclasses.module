@@ -13,7 +13,7 @@ function bodyclasses_help($path, $arg) {
     case 'admin/help#bodyclasses':
       $output = '<p>' . t('@todo Add documentation') . '</p>';
       return $output;
-    case 'admin/appearance/settings/bodyclasses':
+    case 'admin/config/content/bodyclasses':
       $output = '<p>' . t('@todo Add documentation') . '</p>';
       return $output;
   }
@@ -36,7 +36,7 @@ function bodyclasses_permission() {
 function bodyclasses_menu() {
   $items = array();
 
-  $items['admin/appearance/settings/bodyclasses'] = array(
+  $items['admin/config/content/bodyclasses'] = array(
     'title' => 'Body Classes',
     'description' => 'Add contextual CSS classes to the body of the page.',
     'page callback' => 'drupal_get_form',

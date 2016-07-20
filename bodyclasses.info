@@ -2,4 +2,4 @@ name = Body Classes
 description = Add contextual CSS classes to the body of the page.
 core = 7.x
 
-configure = admin/appearance/settings/bodyclasses
+configure = admin/config/content/bodyclasses
