@@ -63,7 +63,7 @@ function bodyclasses_preprocess_html(&$variables) {
 /**
  * Retrieve all body classes defined by all modules.
  */
-function bodyclasses_get_bodyclasses(&$variables, array $hooks = array()) {
+function bodyclasses_get_bodyclasses($variables, array $hooks = array()) {
   // Retrieve all information for body classes.
   $bodyclasses_info = module_invoke_all('bodyclasses_info');
   $bodyclasses = array();
@@ -120,7 +120,7 @@ function bodyclasses_bodyclasses_info() {
 /**
  * Integration for the body classes for the user roles.
  */
-function bodyclasses_bodyclasses_user_role(&$variables) {
+function bodyclasses_bodyclasses_user_role($variables) {
   if (isset($variables['user']) && isset($variables['user']->roles)) {
     return $variables['user']->roles;
   }
@@ -132,7 +132,7 @@ function bodyclasses_bodyclasses_user_role(&$variables) {
 /*
  * Integration for the body classes for context
  */
-function bodyclasses_bodyclasses_context(&$variables) {
+function bodyclasses_bodyclasses_context($variables) {
 
   $classes = array();
 
@@ -150,7 +150,7 @@ function bodyclasses_bodyclasses_context(&$variables) {
 /*
  * Integration for the body classes for views
  */
-function bodyclasses_bodyclasses_views(&$variables) {
+function bodyclasses_bodyclasses_views($variables) {
   $classes = array();
 
   if (module_exists('views') && is_callable('views_get_page_view')) {
